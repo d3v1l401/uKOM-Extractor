@@ -1,0 +1,22 @@
+﻿Compilazione avviata 03/03/2015 15:54:50.
+     1>Progetto "C:\Users\d3vil401\Documents\Visual Studio 2013\Projects\uKOM Extractor\uKOM Extractor\Miniz\miniz_tester.vcxproj" sul nodo 2 (destinazioni: Build).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"miniz_tester\Debug_Win32\\" /Fd"miniz_tester\Debug_Win32\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt miniz.c
+         miniz.c
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"miniz_tester\Debug_Win32\\" /Fd"miniz_tester\Debug_Win32\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt miniz_tester.cpp timer.cpp
+         timer.cpp
+         miniz_tester.cpp
+         Generazione del codice in corso...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1193,5): warning MSB8012: TargetPath(C:\Users\d3vil401\Documents\Visual Studio 2013\Projects\uKOM Extractor\uKOM Extractor\Miniz\bin\miniz_tester.exe) does not match the Linker's OutputFile property value (C:\Users\d3vil401\Documents\Visual Studio 2013\Projects\uKOM Extractor\uKOM Extractor\Miniz\bin\miniz_testerD.exe). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1195,5): warning MSB8012: TargetName(miniz_tester) does not match the Linker's OutputFile property value (miniz_testerD). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\d3vil401\Documents\Visual Studio 2013\Projects\uKOM Extractor\uKOM Extractor\Miniz\bin\miniz_testerD.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\d3vil401\Documents\Visual Studio 2013\Projects\uKOM Extractor\uKOM Extractor\Miniz\bin\miniz_tester.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\d3vil401\Documents\Visual Studio 2013\Projects\uKOM Extractor\uKOM Extractor\Miniz\bin\miniz_tester.lib" /MACHINE:X86 /SAFESEH miniz_tester\Debug_Win32\miniz.obj
+         miniz_tester\Debug_Win32\miniz_tester.obj
+         miniz_tester\Debug_Win32\timer.obj
+     1>miniz.obj : warning LNK4075: '/EDITANDCONTINUE' ignorato a causa della specifica di '/SAFESEH'
+         miniz_tester.vcxproj -> C:\Users\d3vil401\Documents\Visual Studio 2013\Projects\uKOM Extractor\uKOM Extractor\Miniz\bin\miniz_tester.exe
+     1>Compilazione progetto "C:\Users\d3vil401\Documents\Visual Studio 2013\Projects\uKOM Extractor\uKOM Extractor\Miniz\miniz_tester.vcxproj" (destinazioni: Build) completata.
+
+Compilazione completata.
+
+Tempo trascorso 00:00:03.92

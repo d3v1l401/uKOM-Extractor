@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="File di origine">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="File di intestazione">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="File di risorse">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="File di intestazione\Action Taker">
+      <UniqueIdentifier>{5071adab-7915-4a7b-80e2-ebbe5835dba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di intestazione\Header Manager">
+      <UniqueIdentifier>{e73d7274-47fd-40e4-ae52-ba43973a9167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di intestazione\Extraction Manager">
+      <UniqueIdentifier>{146ec2d2-1461-4504-8daa-300b2bb37554}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di intestazione\Miscellanous">
+      <UniqueIdentifier>{a669bafe-7f02-4600-b15d-b4e7de7962d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di intestazione\Console Colors">
+      <UniqueIdentifier>{679dcf41-9c97-4e13-9cbc-6803c14ff096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di intestazione\Console Color">
+      <UniqueIdentifier>{831d2296-42b6-4d75-a46c-125aec27277d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di intestazione\Header Manager\XML Manager">
+      <UniqueIdentifier>{85624b27-8c46-4461-a385-c07c517e2f8d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="ATaker.cpp">
+      <Filter>File di intestazione\Action Taker</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>File di intestazione\Miscellanous</Filter>
+    </ClCompile>
+    <ClCompile Include="CColors\advconsole.cpp">
+      <Filter>File di intestazione\Console Color</Filter>
+    </ClCompile>
+    <ClCompile Include="CColors\advconsole.win32.cpp">
+      <Filter>File di intestazione\Console Color</Filter>
+    </ClCompile>
+    <ClCompile Include="HManager.cpp">
+      <Filter>File di intestazione\Header Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLManager.cpp">
+      <Filter>File di intestazione\Header Manager\XML Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="EManager.cpp">
+      <Filter>File di intestazione\Extraction Manager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Global.h">
+      <Filter>File di intestazione\Miscellanous</Filter>
+    </ClInclude>
+    <ClInclude Include="ATaker.h">
+      <Filter>File di intestazione\Action Taker</Filter>
+    </ClInclude>
+    <ClInclude Include="CColors\advconsole.h">
+      <Filter>File di intestazione\Console Color</Filter>
+    </ClInclude>
+    <ClInclude Include="HManager.h">
+      <Filter>File di intestazione\Header Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLManager.h">
+      <Filter>File di intestazione\Header Manager\XML Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EManager.h">
+      <Filter>File di intestazione\Extraction Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="uKOM Extractor.rc">
+      <Filter>File di risorse</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="LKElsword.ico">
+      <Filter>File di risorse</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

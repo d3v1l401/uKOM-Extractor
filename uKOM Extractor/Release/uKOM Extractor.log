@@ -1,0 +1,31 @@
+﻿Compilazione avviata 02/03/2015 19:59:37.
+     1>Progetto "C:\Users\d3vil401\documents\visual studio 2013\Projects\uKOM Extractor\uKOM Extractor\uKOM Extractor.vcxproj" sul nodo 2 (destinazioni: Build).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ATaker.cpp CColors\advconsole.cpp CColors\advconsole.win32.cpp CColors\colorex.cpp CColors\cursorex.cpp CColors\gradient.cpp Global.cpp HManager.cpp Main.cpp
+         ATaker.cpp
+         advconsole.cpp
+         advconsole.win32.cpp
+         colorex.cpp
+         cursorex.cpp
+         gradient.cpp
+         Global.cpp
+         HManager.cpp
+         Main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\d3vil401\documents\visual studio 2013\Projects\uKOM Extractor\Release\uKOM Extractor.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\d3vil401\documents\visual studio 2013\Projects\uKOM Extractor\Release\uKOM Extractor.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\d3vil401\documents\visual studio 2013\Projects\uKOM Extractor\Release\uKOM Extractor.lib" /MACHINE:X86 /SAFESEH Release\ATaker.obj
+         Release\advconsole.obj
+         Release\advconsole.win32.obj
+         Release\colorex.obj
+         Release\cursorex.obj
+         Release\gradient.obj
+         Release\Global.obj
+         Release\HManager.obj
+         Release\Main.obj
+         Generazione codice in corso...
+         Generazione codice terminata
+         uKOM Extractor.vcxproj -> C:\Users\d3vil401\documents\visual studio 2013\Projects\uKOM Extractor\Release\uKOM Extractor.exe
+     1>Compilazione progetto "C:\Users\d3vil401\documents\visual studio 2013\Projects\uKOM Extractor\uKOM Extractor\uKOM Extractor.vcxproj" (destinazioni: Build) completata.
+
+Compilazione completata.
+
+Tempo trascorso 00:00:03.33

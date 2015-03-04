@@ -1,0 +1,1 @@
+"uKOM Extractor.exe" -u data001.kom
