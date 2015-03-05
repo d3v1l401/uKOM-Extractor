@@ -15,6 +15,8 @@ private:
 	static unsigned long Size;
 	static unsigned long XMLSize;
 	static char* KOMName;
+
+	static bool CheckFile(char* FileName);
 protected:
 
 
@@ -38,5 +40,7 @@ public:
 
 	static void Init(char* XMLBuffer, unsigned long XMLSize, unsigned long KOMSize, char* KOMName);
 	static void ReadXML();
+
+	static unsigned long GetXML(char* XMLBuffer, unsigned long BuffersSize, unsigned long FNum);
 
 };

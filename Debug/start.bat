@@ -1,1 +1,1 @@
-"uKOM Extractor.exe" -u data001.kom
+"uKOM Extractor.exe" -p data002.kom

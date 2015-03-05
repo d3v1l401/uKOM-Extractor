@@ -37,10 +37,15 @@
 #  define SET_BINARY_MODE(file)
 #endif
 
+/*
 
+	Thanks to Joni-st which remembered me the types (and gave me notice i lost the type 2 that has been used 2 weeks).
+
+*/
 #define ALGORITHM_COMPRESSED 0
-#define ALGORITHM_NOTHING	 1
+#define ALGORITHM_NOTUSED	 1
 #define ALGORITHM_COMP_ENCR	 2
+#define ALGORITHM_ENCR_COMP	 3
 
 #define HEADER_SIZE 72
 
@@ -91,15 +96,16 @@ void EManager::Init(char* Buffer, unsigned long BSize, vector<XMLManager::_XML_E
 void EManager::Extract(vector<XMLManager::_XML_ENTRY> FilesList)
 {
 	int ZRes = NULL;
+	vector<XMLManager::_XML_ENTRY>::iterator XMLIter = FilesList.begin();
 	do
 	{
-		XMLManager::_XML_ENTRY Entry = FilesList.back();
+		XMLManager::_XML_ENTRY Entry = *XMLIter;
 		char* InputData = (char*)malloc(Entry.CompressedSize);
+		char* MiddleData = (char*)malloc(Entry.Size + 1);
 		char* OutputData = (char*)malloc(Entry.Size + 1);
-		char* OutputData2 = (char*)malloc(Entry.Size + 1);
 		memset(InputData, 0x00, Entry.CompressedSize);
+		memset(MiddleData, 0x00, Entry.Size + 1);
 		memset(OutputData, 0x00, Entry.Size + 1);
-		memset(OutputData2, 0x00, Entry.Size + 1);
 
 		memcpy(InputData, EManager::CurrentPtr, Entry.CompressedSize);
 
@@ -111,10 +117,6 @@ void EManager::Extract(vector<XMLManager::_XML_ENTRY> FilesList)
 
 		switch (Entry.Algorithm)
 		{
-		case ALGORITHM_NOTHING:
-			EManager::Save(Entry.FName, InputData, Entry.CompressedSize);
-			cout << Color(AC_GREEN) << "Done!\n";
-			break;
 		case ALGORITHM_COMPRESSED:
 			ZRes = EManager::ZLib::Decompress(OutputData, Entry.Size, InputData, Entry.CompressedSize);
 			if (ZRes != Z_OK)
@@ -124,14 +126,28 @@ void EManager::Extract(vector<XMLManager::_XML_ENTRY> FilesList)
 			} else {
 				cout << Color(AC_RED) << "FAILED (" << ZRes << ")!\n";
 			}
+			cout << Color(AC_GREEN) << "Done!\n";
 			break;
 		case ALGORITHM_COMP_ENCR:
 #ifdef PRIVATE_VERSION
-			EManager::Crypto::DecryptLUA(InputData, Entry.CompressedSize, OutputData);
-			EManager::ZLib::Decompress(OutputData2, Entry.Size, OutputData, Entry.CompressedSize);
+			EManager::ZLib::Decompress(MiddleData, Entry.Size, OutputData, Entry.CompressedSize);
+			EManager::Crypto::DecryptLUA(MiddleData, Entry.CompressedSize, OutputData);
+			EManager::Save(Entry.FName, OutputData, Entry.Size);
+#else
+			cout << Color(AC_RED) << "Algorithm 2 is partially supported, saving decompressed encrypted data.\n";
+			EManager::ZLib::Decompress(OutputData, Entry.Size, InputData, Entry.CompressedSize);
+			EManager::Save(Entry.FName, OutputData, Entry.CompressedSize);
+#endif
+			cout << Color(AC_GREEN) << "Done!\n";
+			break;
+			break;
+		case ALGORITHM_ENCR_COMP:
+#ifdef PRIVATE_VERSION
+			EManager::Crypto::DecryptLUA(InputData, Entry.CompressedSize, MiddleData);
+			EManager::ZLib::Decompress(OutputData, Entry.Size, MiddleData, Entry.CompressedSize);
 			EManager::Save(Entry.FName, OutputData2, Entry.Size);
 #else
-			cout << Color(AC_RED) << "Algorithm 2 is still not supported, saving raw encrypted data.\n";
+			cout << Color(AC_RED) << "Algorithm 3 is still not supported, saving raw encrypted data.\n";
 			EManager::Save(Entry.FName, OutputData, Entry.CompressedSize);
 #endif
 			cout << Color(AC_GREEN) << "Done!\n";
@@ -139,10 +155,11 @@ void EManager::Extract(vector<XMLManager::_XML_ENTRY> FilesList)
 		}
 
 		free(InputData);
+		free(MiddleData);
 		free(OutputData);
-		free(OutputData2);
 
 		EManager::CurrentPtr += Entry.CompressedSize;
-		FilesList.pop_back();
-	} while (!FilesList.empty());
+		XMLIter++;
+		//FilesList.pop_back();
+	} while (XMLIter != FilesList.end());
 }

@@ -101,3 +101,75 @@ void XMLManager::ReadXML()
 	//HManager::LastOffset = ((HManager::HBuffer + DEFAULT_HEADER_SIZE) + HManager::KOMHeader.XMLSize);
 	EManager::Init(XMLManager::XMLBuff, XMLManager::Size, XMLManager::FilesList, XMLManager::XMLSize, XMLManager::KOMName);
 }
+
+inline bool XMLManager::CheckFile(char* FileName) 
+{
+	if (FILE *file = fopen(FileName, "rb")) {
+		fclose(file);
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+unsigned long XMLManager::GetXML(char* XMLBuffer, unsigned long BuffersSize, unsigned long FNum)
+{
+	if (!CheckFile("KOMInfo.xml"))
+	{
+		cout << Color(AC_RED) << "KOMInfo.xml does not exists or is not accessible!\n";
+		_getch();
+		exit(0);
+	}
+
+	unsigned long BuffersSized = NULL;
+	unsigned long FNumd = NULL;
+	xml_document<> doc;
+	std::ifstream file("KOMInfo.xml");
+	std::stringstream bufferx;
+	bufferx << file.rdbuf();
+	file.close();
+	std::string content(bufferx.str());
+	doc.parse<0>(&content[0]);
+
+	xml_node<> *pRoot = doc.first_node();
+	for (xml_node<> *pNode = pRoot->first_node("File"); pNode; pNode = pNode->next_sibling())
+	{
+		XMLManager::Files.Algorithm = NULL;
+		//HManager::Files.Checksum		= nullptr;
+		XMLManager::Files.CompressedSize = NULL;
+		//HManager::Files.FileTime		= { 0 };
+		//HManager::Files.FName			= { 0 };
+		XMLManager::Files.Size = NULL;
+		// File name.
+		xml_attribute<> *pAttr = pNode->first_attribute("Name");
+		//HManager::Files.FName = pAttr->value();
+		strcpy(XMLManager::Files.FName, pAttr->value() + '\0');
+		// Its size.
+		pAttr = pNode->first_attribute("Size");
+		XMLManager::Files.Size = atoi(pAttr->value());
+		// Its compressed size.
+		pAttr = pNode->first_attribute("CompressedSize");
+		XMLManager::Files.CompressedSize = atoi(pAttr->value());
+		// Checksum.
+		pAttr = pNode->first_attribute("Checksum");
+		//HManager::Files.Checksum = pAttr->value();
+		strcpy(XMLManager::Files.Checksum, pAttr->value() + '\0');
+		// File timestamp (even if we don't care)
+		pAttr = pNode->first_attribute("FileTime");
+		//HManager::Files.FileTime = pAttr->value();
+		strcpy(XMLManager::Files.FileTime, pAttr->value() + '\0');
+		// MOST IMPORTANT: Algorithm type.
+		pAttr = pNode->first_attribute("Algorithm");
+		XMLManager::Files.Algorithm = atoi(pAttr->value());
+
+		BuffersSized += XMLManager::Files.CompressedSize;
+		FNumd++;
+
+		XMLManager::FilesList.push_back(Files);
+	}
+
+	BuffersSize = BuffersSized;
+	FNum = FNumd;
+	XMLBuffer = (char*)content.c_str();
+}

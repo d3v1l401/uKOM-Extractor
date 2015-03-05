@@ -42,9 +42,9 @@ short int ATaker::Argc = NULL;
 const char* ATaker::HelpMessage = "[ HELP ]\n\n"
 								  "- COMMANDS -\n\n"
 								  "-h: Will print this help message.\n"
-								  "-u: Will unpack the selected KOM.\n";
-								  /* uKOM Extractor (FREE Open Source) does not support these. :)
-								  "-p: Will pack the selected folder (Required KOMInfo.xml into it).\n"
+								  "-u: Will unpack the selected KOM.\n"
+								  "-p: Will pack the selected folder (Required KOMInfo.xml into it).\n";
+								 /* uKOM Extractor (FREE Open Source) does not support these. :)
 								  "\n- OPTIONAL FILTER -\n\n"
 								  "-file: Will extract the specifyed file.\n"
 								  "-ext: Will extract the files with the specifyed extensione (lua, x, tet, y, tga, txt, ini).\n"

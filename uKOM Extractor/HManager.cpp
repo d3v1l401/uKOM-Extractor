@@ -75,8 +75,45 @@ void HManager::Init(short int ActionType, char* TargetName)
 			exit(0);
 		}
 		fclose(HManager::TargetFile);
+		HManager::ReadHeader();
+	} else {
+		HManager::TargetName = TargetName;
+		HManager::TargetFile = fopen(TargetName, "wb");
+		if (!HManager::TargetFile)
+		{
+			cout << Color(AC_RED) << "Unable to write " << TargetName << ".\n";
+			_getch();
+			exit(0);
+		}
+		
+		unsigned long BuffersSize = NULL;
+		unsigned long FilesNumber = NULL;
+		HManager::KOMHeader.XMLSize = XMLManager::GetXML(HManager::Buffer, BuffersSize, FilesNumber);
+		
+		// Yea yea, so:
+		// - XMLSize is the size of the XML.
+		// - Buffer is the buffer of XML.
+		// - BuffersSize is the sum of the size of all buffers of the files.
+
+		unsigned long KOMSize = (HEADER_SIZE + HManager::KOMHeader.XMLSize + BuffersSize);
+		char* KOMBuff = (char*)malloc(KOMSize);
+		memset(KOMBuff, 0x00, KOMSize);
+
+		cout << Color(AC_WHITE) << "Your file " << Color(AC_GREEN) << HManager::TargetName 
+			 << Color(AC_WHITE) << " will be sized " << Color(AC_GREEN) << KOMSize << "\n";
+
+		HManager::KOMHeader.ArchiverVersion = 1;
+		HManager::KOMHeader.CRC[0] = 0x00; // Will be done later.
+		HManager::KOMHeader.CRC2 = NULL;
+		HManager::KOMHeader.FilesNumber = FilesNumber;
+		strncpy(HManager::KOMHeader.Header, "KOG GC TEAM MASSFILE V.0.3.", 26);
+
+		cout << Color(AC_WHITE) << "Building " << Color(AC_MAGENTA) << "KOM Header...\n";
+		memcpy(KOMBuff, &HManager::KOMHeader, sizeof(HManager::KOMHeader));
+		cout << Color(AC_WHITE) << "Building " << Color(AC_MAGENTA) << "XML...\n";
+		memcpy(KOMBuff + HEADER_SIZE, HManager::Buffer, HManager::KOMHeader.XMLSize);
 	}
-	HManager::ReadHeader();
+
 }
 
 void HManager::Init(short int ActionType, char* TargetName, short int FilterType, char* FilterValue)
