@@ -152,6 +152,10 @@ void EManager::Extract(vector<XMLManager::_XML_ENTRY> FilesList)
 #endif
 			cout << Color(AC_GREEN) << "Done!\n";
 			break;
+		case ALGORITHM_NOTUSED:
+			cout << Color(AC_RED) << "Algorithm 1 is unused, how did you get this? Saving raw data...\n";
+			EManager::Save(Entry.FName, OutputData, Entry.CompressedSize);
+			break;
 		}
 
 		free(InputData);
